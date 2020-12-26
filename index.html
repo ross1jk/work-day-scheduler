@@ -30,9 +30,33 @@
     </header>
     <div class="container">
       <!-- Timeblocks go here -->
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="timeDisplay">Times Go Here</span>
+        </div>
+        <textarea class="form-control" aria-label="With textarea" aria-describedby="saveBtn" id="userInput"></textarea>
+             
+            <div class="input-group-append" id="saveBtn">
+            <button class="btn btn-primary btn-lg" type="button"><i class="far fa-save"></i></button>
+            </div>
+
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script> 
+  /* What I will need:
+  -rows that can be typed into: 9-5 every hour
+  -times that match and change
+  -css that changes color with the time
+  -a save button for the event
+  -running dates/times
+    */
+
+    //Time Code
+   // $("#currentDay").append("Test Time")
+   $("#currentDay").moment('01/12/2016', 'DD/MM/YYYY', true).format();
+   
+  </script>
   </body>
 </html>

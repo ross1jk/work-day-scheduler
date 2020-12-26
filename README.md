@@ -49,7 +49,7 @@ THEN the saved events persist
 
 The following animation demonstrates the application functionality:
 
-![day planner demo](./Assets/05-third-party-apis-homework-demo.gif)
+![day planner demo](./images/05-third-party-apis-homework-demo.gif)
 
 
 ## Grading Requirements
