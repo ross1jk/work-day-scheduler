@@ -28,17 +28,17 @@
       <p class="lead">A simple calendar app for scheduling your work day</p>
       <p id="currentDay" class="lead"></p>
     </header>
-    <div class="container">
-      <!-- Timeblocks go here -->
+    <div class="container" id="timeblock">
+      <!-- Timeblocks go here 
       <div class="input-group">
         <div class="input-group-prepend">
-          <span class="input-group-text" id="timeDisplay">Times Go Here</span>
+          <span class="input-group-text" id="timeDisplay"></span>
         </div>
         <textarea class="form-control" aria-label="With textarea" aria-describedby="saveBtn" id="userInput"></textarea>
              
             <div class="input-group-append" id="saveBtn">
-            <button class="btn btn-primary btn-lg" type="button"><i class="far fa-save"></i></button>
-            </div>
+            <button class="btn btn-primary btn-lg" type="button" onclick="savePlans()"><i class="far fa-save"></i></button>
+            </div>  --> 
 
     </div>
 
@@ -55,8 +55,49 @@
 
     //Time Code
    // $("#currentDay").append("Test Time")
-   $("#currentDay").moment('01/12/2016', 'DD/MM/YYYY', true).format();
+   //$("#currentDay").moment('01/12/2016', 'DD/MM/YYYY', true).format();
    
+  //Create Time Forms
+   var times = ["9:00", "10:00","11:00","12:00","1:00","2:00","3:00","4:00","5:00"];
+  
+  //$("#timeDisplay").append(times[i]); 
+  
+  for (i=0; i < times.length; i++) {
+  $("#timeblock").append("<div class='input-group'><div class='input-group-prepend'><span class='input-group-text' id='timeDisplay'></span></div><textarea class='form-control' aria-label='With textarea' aria-describedby='saveBtn' id='userInput' onclick='savePlans()'></textarea><div class='input-group-append' id='saveBtn'><button class='btn btn-primary btn-lg' type='button'><i class='far fa-save'></i></button></div>");
+ // $("#timeDisplay").append(times[i]); 
+  }
+
+
+  /*function renderQuestion(){
+    if(pos <= times.length){
+      
+    }
+    renderQuestion()
+  }
+
+ // this works for appending $("#userInput").append("testing this crap")
+ 
+ //these are thoughts and plans for populating the times
+ /*
+  function savePlans() {
+    var plans = {
+      details: get("inlineFormInput").value.trim()
+    }
+    var userInput = document.getElementById("userInput");
+    var p = document.createElement("p");
+    
+    if (clicked_id === true) {
+     var mStuff = localStorage.setItem(get("inlineFormInput").value.trim(), JSON.stringify(plans)
+     $("#userInput").append("")
+
+    }
+
+
+
+      //var workDay = document.getElementById("userInput");
+     // workDay.innerHTML = ''    
+  }*/
+  
   </script>
   </body>
 </html>
