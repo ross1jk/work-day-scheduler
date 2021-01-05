@@ -60,97 +60,83 @@
    //for (i=0; i < times.length; i++){
 
    
-   //Create Time Forms - should poplulate neough for 9-5
-  let timeBlocks = ['', '', '', '', '', '', '', '', ''];
-  let timeDisplay = [9, 10, 11, 12, 1, 2, 3, 4, 5];
-  let createForm = `
+   //Create Time Forms
+  //this is for tmy times and text display
+  let pos = 0;
+  let times = ""; 
+  let timeDisplay; 
+  let plansDisplay; 
+  // for creating creating each form 
+ // let timeBlocks = ['', '', '', '', '', '', '', '', ''];
+  let createFormTimes = `
       <div class="row">
         <div class="col-1">
-          <p class="timeDisplay"></p>
-        </div>
-        
+          <p class="timeDisplay" id=""></p>
+        </div>` 
+  let createFormInputs = `
         <div class="col-11 input-group">
           <textarea class="form-control userInput" aria-label="With textarea" aria-describedby="saveBtn"></textarea>
-          
+          ` 
+  let createFormSave = `
           <div class="input-group-append" id="saveBtn">
              <button class="btn btn-primary btn-lg saveBtn" type="button"><i class="far fa-save"></i></button>
              </div> 
           </div> 
       </div>`
 
+ let finalForm = createFormTimes + createFormInputs + createFormSave; 
 
-    let myDay = [
-      {
-        time: "9AM", 
-        plans: ""
-      },
-      {
-        time: "10 AM", 
-        plans: ""
-      }, 
-      {
-        time: "11 AM", 
-        plans: ""
-      }, 
-      {
-        time: "12 PM", 
-        plans: ""
-      },
-      {
-        time: "1 PM", 
-        plans: ""
-      },
-      {
-        time: "2 PM", 
-        plans: ""
-      },
-      {
-        time: "3 PM", 
-        plans: ""
-      },
-      {
-        time: "4 PM", 
-        plans: ""
-      },
-      {
-        time: "5 PM", 
-        plans: ""
-      },]
+      let myDay = [
+      {time: "9 AM", plans: ""},
+      {time: "10 AM", plans: ""}, 
+      {time: "11 AM", plans: ""}, 
+      {time: "12 PM", plans: ""},
+      {time: "1 PM", plans: ""},
+      {time: "2 PM", plans: ""},
+      {time: "3 PM", plans: ""},
+      {time: "4 PM", plans: ""},
+      {time: "5 PM", plans: ""},
+      ]; 
 
-    for (i=0; i < timeBlocks.length; i++) { 
-    $("#timeblock").append(createForm); 
-   // $.each(myDay[time[i]]).append("testingthis")
-    };
+    //console.log(myDay); 
+    /*console.log(myDay[0].time); */
+      //let startTimes = myDay[0].time; 
+   // timeDisplay = startTimes++ 
     
-  //These match up to my array
-  times = myDay[0].time;
-  //plans = myDay[pos].plans;
+ 
 
-  alert(times); 
+  for (i=0; i < myDay.length; i++) { 
+    $("#timeblock").append(finalForm);
+  }
+  for (i=0; i < myDay.length; i++) { 
+    let finalTimes = myDay[pos].time; 
+    pos++; 
+    console.log(finalTimes); 
+  }
+   
+   
+     // $(".timeDisplay").append.each(myDay[i].time); 
     
-    //let times = moment().set('hour', timeDisplay[i]).format("hA");
-      //$("#timeDisplay").append(times);
+    //createFormInputs = myDay.plans[0]; 
+   // }
+    //$("#timeblock").append(finalForm);
+ 
+  
+      //
     
     
     
       //setting to local storage
       $(".saveBtn").click(function () {
       var dailyPlans = $(".userInput").val();
-      localStorage.setItem("Daily Plans", dailyPlans);
-    // alert(localStorage.getItem("Daily Plans")); 
-   });
+      });
   
    //Save my local storage to the text input box 
    var storedDailyPlans = localStorage.getItem("Daily Plans");
    $(".userInput").append(storedDailyPlans);
  
-  /*'times[i]'
-  //
-  var plans = {
-     details: 
-    }
-  //function savePlans(event)
-    
+  /*
+
  
  //these are thoughts and plans for populating the times
  /*
@@ -163,12 +149,7 @@
      var mStuff = 
      $("#userInput").append("")
 
-    }
-
-
-
-      //var workDay = document.getElementById("userInput");
-     // workDay.innerHTML = ''    
+    }    
   }*/
   
   </script>
