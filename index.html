@@ -46,93 +46,53 @@
 
 
    //Time Code
-   // Current date appended to heading 
-   var currentDate = moment().format("dddd, MMMM Do, YYYY"); 
-   $("#currentDay").append(currentDate); 
-   //this gives me the current hour
-  var currentTime = moment().format("h A"); 
+  // Current date appended to heading 
+  let currentDate = moment().format("dddd, MMMM Do, YYYY"); 
+  $("#currentDay").append(currentDate); 
+  //this gives me the current hour - not using right now
+  let currentTime = moment().format("h A"); 
   // var calendarTime = currentTime.clone();
   //moment will refrence the original refrence of moment and the current time, will need that infomraiton. 
-
-  // function timePass(){
-    //if 
-   //}
-   //for (i=0; i < times.length; i++){
-
    
-   //Create Time Forms
+  //Create Time Forms
   //this is for tmy times and text display
   let pos = 0;
-  let times = ""; 
-  let timeDisplay; 
-  let plansDisplay; 
-  // for creating creating each form 
- // let timeBlocks = ['', '', '', '', '', '', '', '', ''];
-
- /*let createFormTimes = `
-      <div class="row">
-        <div class="col-1">
-          <p id="timeDisplay"></p>
-        </div>` 
-  let createFormInputs = `
-        <div class="col-11 input-group">
-          <textarea class="form-control userInput" aria-label="With textarea" aria-describedby="saveBtn"></textarea>
-          ` 
-  let createFormSave = `
-          <div class="input-group-append" id="saveBtn">
-             <button class="btn btn-primary btn-lg saveBtn" type="button"><i class="far fa-save"></i></button>
-             </div> 
-          </div> 
-      </div>` */
-
- //let finalForm = createFormTimes + createFormInputs + createFormSave; 
-
-      let myDay = [
-      {time: "9 AM", id: "hour1", plans: ""},
-      {time: "10 AM", id: "hour2", plans: ""}, 
-      {time: "11 AM", id: "hour3", plans: ""}, 
-      {time: "12 PM", id: "hour4", plans: ""},
-      {time: "1 PM", id: "hour5", plans: ""},
-      {time: "2 PM", id: "hour6", plans: ""},
-      {time: "3 PM", id: "hour7", plans: ""},
-      {time: "4 PM", id: "hour8", plans: ""},
-      {time: "5 PM", id: "hour9", plans: ""},
-      ]; 
-    
+  
+  //array for my complete day times, plans are blanks (not sure will need ids)
+  let myDay = [
+  {time: "9 AM", id: "hour1", plans: ""},
+  {time: "10 AM", id: "hour2", plans: ""}, 
+  {time: "11 AM", id: "hour3", plans: ""}, 
+  {time: "12 PM", id: "hour4", plans: ""},
+  {time: "1 PM", id: "hour5", plans: ""},
+  {time: "2 PM", id: "hour6", plans: ""},
+  {time: "3 PM", id: "hour7", plans: ""},
+  {time: "4 PM", id: "hour8", plans: ""},
+  {time: "5 PM", id: "hour9", plans: ""},
+  ]; 
 
   for (i=0; i < myDay.length; i++) { 
-   // $("#timeblock").append(finalForm);
     let finalTimes = myDay[pos].time; 
-   // pos++; 
-    //console.log(finalTimes); */
+    pos++; 
+    //code that has the whole row
     let row = 
     '<div class="row"><div class="col-1">'
-      + pos++ +
+      + //will display the time
       '<p id="timeDisplay">' + finalTimes + '</p> </div>'
-      +
+      + //text input goes here
       '<div class="col-11 input-group"><textarea class="form-control userInput" aria-label="With textarea" aria-describedby="saveBtn"></textarea>'
-      +
+      + //save button is here 
       '<div class="input-group-append" id="saveBtn"><button class="btn btn-primary btn-lg saveBtn" type="button"><i class="far fa-save"></i></button></div> </div></div>'
       
-      console.log(row);
+      //test that works (as needed) console.log(row);
+      //appends to page 
       $("#timeblock").append(row); 
     }
    
-     // each(myDay[i].time); 
-    
-    //createFormInputs = myDay.plans[0]; 
-   // }
-    //$("#timeblock").append(finalForm);
- 
-  
-      //
-    
-    
-    
-      //setting to local storage
-      $(".saveBtn").click(function () {
+    //setting to local storage
+    $(".saveBtn").click(function () {
       var dailyPlans = $(".userInput").val();
-      });
+    });
   
    //Save my local storage to the text input box 
    var storedDailyPlans = localStorage.getItem("Daily Plans");
