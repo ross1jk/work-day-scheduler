@@ -68,10 +68,11 @@
   let plansDisplay; 
   // for creating creating each form 
  // let timeBlocks = ['', '', '', '', '', '', '', '', ''];
-  let createFormTimes = `
+
+ /*let createFormTimes = `
       <div class="row">
         <div class="col-1">
-          <p class="timeDisplay" id=""></p>
+          <p id="timeDisplay"></p>
         </div>` 
   let createFormInputs = `
         <div class="col-11 input-group">
@@ -82,40 +83,42 @@
              <button class="btn btn-primary btn-lg saveBtn" type="button"><i class="far fa-save"></i></button>
              </div> 
           </div> 
-      </div>`
+      </div>` */
 
- let finalForm = createFormTimes + createFormInputs + createFormSave; 
+ //let finalForm = createFormTimes + createFormInputs + createFormSave; 
 
       let myDay = [
-      {time: "9 AM", plans: ""},
-      {time: "10 AM", plans: ""}, 
-      {time: "11 AM", plans: ""}, 
-      {time: "12 PM", plans: ""},
-      {time: "1 PM", plans: ""},
-      {time: "2 PM", plans: ""},
-      {time: "3 PM", plans: ""},
-      {time: "4 PM", plans: ""},
-      {time: "5 PM", plans: ""},
+      {time: "9 AM", id: "hour1", plans: ""},
+      {time: "10 AM", id: "hour2", plans: ""}, 
+      {time: "11 AM", id: "hour3", plans: ""}, 
+      {time: "12 PM", id: "hour4", plans: ""},
+      {time: "1 PM", id: "hour5", plans: ""},
+      {time: "2 PM", id: "hour6", plans: ""},
+      {time: "3 PM", id: "hour7", plans: ""},
+      {time: "4 PM", id: "hour8", plans: ""},
+      {time: "5 PM", id: "hour9", plans: ""},
       ]; 
-
-    //console.log(myDay); 
-    /*console.log(myDay[0].time); */
-      //let startTimes = myDay[0].time; 
-   // timeDisplay = startTimes++ 
     
- 
 
   for (i=0; i < myDay.length; i++) { 
-    $("#timeblock").append(finalForm);
-  }
-  for (i=0; i < myDay.length; i++) { 
+   // $("#timeblock").append(finalForm);
     let finalTimes = myDay[pos].time; 
-    pos++; 
-    console.log(finalTimes); 
-  }
+   // pos++; 
+    //console.log(finalTimes); */
+    let row = 
+    '<div class="row"><div class="col-1">'
+      + pos++ +
+      '<p id="timeDisplay">' + finalTimes + '</p> </div>'
+      +
+      '<div class="col-11 input-group"><textarea class="form-control userInput" aria-label="With textarea" aria-describedby="saveBtn"></textarea>'
+      +
+      '<div class="input-group-append" id="saveBtn"><button class="btn btn-primary btn-lg saveBtn" type="button"><i class="far fa-save"></i></button></div> </div></div>'
+      
+      console.log(row);
+      $("#timeblock").append(row); 
+    }
    
-   
-     // $(".timeDisplay").append.each(myDay[i].time); 
+     // each(myDay[i].time); 
     
     //createFormInputs = myDay.plans[0]; 
    // }
