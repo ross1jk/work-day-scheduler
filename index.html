@@ -91,29 +91,14 @@
    
     //setting to local storage
     $(".saveBtn").click(function () {
-      var dailyPlans = $(".userInput").val();
+      let dailyPlans = $(".userInput").val();
+      localStorage.setItem("Daily Plans", dailyPlans); 
     });
   
    //Save my local storage to the text input box 
    var storedDailyPlans = localStorage.getItem("Daily Plans");
    $(".userInput").append(storedDailyPlans);
  
-  /*
-
- 
- //these are thoughts and plans for populating the times
- /*
-  function savePlans() {
-   
-    var userInput = document.getElementById("userInput");
-    var p = document.createElement("p");
-    
-    if (clicked_id === true) {
-     var mStuff = 
-     $("#userInput").append("")
-
-    }    
-  }*/
   
   </script>
   </body>
