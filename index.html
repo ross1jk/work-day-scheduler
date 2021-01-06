@@ -30,7 +30,6 @@
     </header>
     <div class="container" id="timeblock">
       <!-- Timeblocks go here --> 
-  
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
@@ -44,13 +43,10 @@
   -running dates/times
     */
 
-
-   //Time Code
   // Current date appended to heading 
   let currentDate = moment().format("dddd, MMMM Do, YYYY"); 
   $("#currentDay").append(currentDate); 
-  //this gives me the current hour - not using right now
-  let currentTime = moment().format("h A"); 
+  
   // var calendarTime = currentTime.clone();
   //moment will refrence the original refrence of moment and the current time, will need that infomraiton. 
    
@@ -75,12 +71,13 @@
     let finalTimes = myDay[pos].time; 
     pos++; 
     //code that has the whole row
+    
     let row = 
-    '<div class="row"><div class="col-1">'
+      '<div class="input-group"><div class="input-group-prepend">'
       + //will display the time
-      '<p id="timeDisplay">' + finalTimes + '</p> </div>'
+      '<span class="input-group-text" id="inputGroup-sizing-default timeDisplay">' + finalTimes + '</span></div>'
       + //text input goes here
-      '<div class="col-11 input-group"><textarea class="form-control userInput" aria-label="With textarea" aria-describedby="saveBtn"></textarea>'
+      '<textarea class="form-control userInput" aria-label="With textarea" aria-describedby="saveBtn"></textarea>'
       + //save button is here 
       '<div class="input-group-append" id="saveBtn"><button class="btn btn-primary btn-lg saveBtn" type="button"><i class="far fa-save"></i></button></div> </div></div>'
       
@@ -89,6 +86,19 @@
       $("#timeblock").append(row); 
     }
    
+  //Rows and Time 
+
+  function timeCheck(){
+   let past = moment().format("h A"); 
+   let present = moment().format("h A"); 
+   let future = moment().format("h A"); 
+  
+   if ($("#timeDisplay") <= present){
+     $(".userInput").append("cool");  
+   }
+  }
+  
+
     //setting to local storage
     $(".saveBtn").click(function () {
       let dailyPlans = $(".userInput").val();
