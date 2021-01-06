@@ -56,19 +56,20 @@
   
   //array for my complete day times, plans are blanks (not sure will need ids)
   let myDay = [
-  {time: "9 AM", id: "hour1", plans: ""},
-  {time: "10 AM", id: "hour2", plans: ""}, 
-  {time: "11 AM", id: "hour3", plans: ""}, 
-  {time: "12 PM", id: "hour4", plans: ""},
-  {time: "1 PM", id: "hour5", plans: ""},
-  {time: "2 PM", id: "hour6", plans: ""},
-  {time: "3 PM", id: "hour7", plans: ""},
-  {time: "4 PM", id: "hour8", plans: ""},
-  {time: "5 PM", id: "hour9", plans: ""},
+  {time: "9 AM", id: "9", plans: ""},
+  {time: "10 AM", id: "10", plans: ""}, 
+  {time: "11 AM", id: "11", plans: ""}, 
+  {time: "12 PM", id: "12", plans: ""},
+  {time: "1 PM", id: "1", plans: ""},
+  {time: "2 PM", id: "2", plans: ""},
+  {time: "3 PM", id: "3", plans: ""},
+  {time: "4 PM", id: "4", plans: ""},
+  {time: "5 PM", id: "5", plans: ""},
   ]; 
 
   for (i=0; i < myDay.length; i++) { 
     let finalTimes = myDay[pos].time; 
+    let myPlans = myDay[pos].id
     pos++; 
     //code that has the whole row
     
@@ -77,16 +78,17 @@
       + //will display the time
       '<span class="input-group-text" id="inputGroup-sizing-default timeDisplay">' + finalTimes + '</span></div>'
       + //text input goes here
-      '<textarea class="form-control userInput" aria-label="With textarea" aria-describedby="saveBtn"></textarea>'
+      '<textarea class="form-control userInput" id="' + myPlans + '" aria-label="With textarea" aria-describedby="saveBtn"></textarea>'
       + //save button is here 
       '<div class="input-group-append" id="saveBtn"><button class="btn btn-primary btn-lg saveBtn" type="button"><i class="far fa-save"></i></button></div> </div></div>'
       
-      //test that works (as needed) console.log(row);
+      //test that works (as needed) 
+      console.log(row);
       //appends to page 
       $("#timeblock").append(row); 
     }
    
-  //Rows and Time 
+  /*Rows and Time 
 
   function timeCheck(){
    let past = moment().format("h A"); 
@@ -96,7 +98,7 @@
    if ($("#timeDisplay") <= present){
      $(".userInput").append("cool");  
    }
-  }
+  } */
   
 
     //setting to local storage
