@@ -42,22 +42,30 @@
   -a save button for the event
   -running dates/times
     */
-
-  // Current date appended to heading 
+ 
+    $(function(){
+      // Current date appended to heading 
   let currentDate = moment().format("dddd, MMMM Do, YYYY"); 
   $("#currentDay").append(currentDate); 
-  
+  let myPlans;
   // var calendarTime = currentTime.clone();
   //moment will refrence the original refrence of moment and the current time, will need that infomraiton. 
-   
-  //Create Time Forms
+
+     //setting to local storage - may have to declare function outside and declare argument in click event 
+    
+  
+   //Save my local storage to the text input box 
+   var storedDailyPlans = localStorage.getItem("Daily Plans");
+   $(".userInput").append(storedDailyPlans);
+
+  function creatTimeForm(){//Create Time Forms
   //this is for tmy times and text display
   let pos = 0;
   
-  //array for my complete day times, plans are blanks (not sure will need ids)
+  //array for my complete day times, plans are blanks (not sure will need ids) myday.map--look into
   let myDay = [
   {time: "9 AM", id: "9", plans: ""},
-  {time: "10 AM", id: "10", plans: ""}, 
+  {time: "10 AM", id: "ten", plans: ""}, 
   {time: "11 AM", id: "11", plans: ""}, 
   {time: "12 PM", id: "12", plans: ""},
   {time: "1 PM", id: "1", plans: ""},
@@ -66,28 +74,40 @@
   {time: "4 PM", id: "4", plans: ""},
   {time: "5 PM", id: "5", plans: ""},
   ]; 
-
+  
+  let row; 
   for (i=0; i < myDay.length; i++) { 
     let finalTimes = myDay[pos].time; 
-    let myPlans = myDay[pos].id
+     myPlans = myDay[pos].id
+    console.log("first" + myPlans); 
     pos++; 
     //code that has the whole row
     
-    let row = 
+     row = 
       '<div class="input-group"><div class="input-group-prepend">'
       + //will display the time
       '<span class="input-group-text" id="inputGroup-sizing-default timeDisplay">' + finalTimes + '</span></div>'
       + //text input goes here
       '<textarea class="form-control userInput" id="' + myPlans + '" aria-label="With textarea" aria-describedby="saveBtn"></textarea>'
       + //save button is here 
-      '<div class="input-group-append" id="saveBtn"><button class="btn btn-primary btn-lg saveBtn" type="button"><i class="far fa-save"></i></button></div> </div></div>'
+      '<div class="input-group-append" id="saveBtn"><button class="btn btn-primary btn-lg saveBtn ' + myPlans + '" type="button"><i class="far fa-save"></i></button></div> </div></div>'
       
-      //test that works (as needed) 
-      console.log(row);
+      //test that works (as needed) console.log(pos); stop propigation   click(function)
+      $(".saveBtn").click(function (e) {
+      let myClass = ($(this).attr("class").split(' ')[4]) 
+      let dailyPlans = $("#"+ myClass).val(); 
+      e.preventDefault(); 
+      e.stopPropagation();
+      console.log(myClass);
+      console.log(dailyPlans);
+      localStorage.setItem("Daily Plans", dailyPlans); 
+      });
+
       //appends to page 
       $("#timeblock").append(row); 
     }
-   
+   }
+  
   /*Rows and Time 
 
   function timeCheck(){
@@ -101,16 +121,12 @@
   } */
   
 
-    //setting to local storage
-    $(".saveBtn").click(function () {
-      let dailyPlans = $(".userInput").val();
-      localStorage.setItem("Daily Plans", dailyPlans); 
-    });
-  
-   //Save my local storage to the text input box 
-   var storedDailyPlans = localStorage.getItem("Daily Plans");
-   $(".userInput").append(storedDailyPlans);
+
  
+   creatTimeForm(); 
+    });
+
+
   
   </script>
   </body>
