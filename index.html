@@ -65,7 +65,7 @@
   //array for my complete day times, plans are blanks (not sure will need ids) myday.map--look into
   let myDay = [
   {time: "9 AM", id: "9", plans: ""},
-  {time: "10 AM", id: "ten", plans: ""}, 
+  {time: "10 AM", id: "1", plans: ""}, 
   {time: "11 AM", id: "11", plans: ""}, 
   {time: "12 PM", id: "12", plans: ""},
   {time: "1 PM", id: "1", plans: ""},
@@ -100,7 +100,7 @@
       e.stopPropagation();
       console.log(myClass);
       console.log(dailyPlans);
-      localStorage.setItem("Daily Plans", dailyPlans); 
+      localStorage.setItem("Daily Plans", myClass +": "+ dailyPlans); 
       });
 
       //appends to page 
