@@ -43,7 +43,7 @@
   -running dates/times
     */
  
-    $(function(){
+  $(function(){
    // Current date appended to heading 
   let currentDate = moment().format("dddd, MMMM Do, YYYY"); 
   $("#currentDay").append(currentDate); 
@@ -89,20 +89,36 @@
      //test that works (as needed) console.log(pos); stop propigation   click(function)
      $(".saveBtn").click(function (e) {
      let myClass = ($(this).attr("class").split(' ')[4]) 
-     let dailyPlans = $("#"+ myClass).val(); 
+     let dailyPlans = {text: $("#"+ myClass).val(), myClass}
      e.preventDefault(); 
      e.stopPropagation();
-     console.log(myClass);
-     console.log(dailyPlans);
-     localStorage.setItem("Daily Plans", myClass + ": "+ dailyPlans); 
+     localStorage.setItem(myClass, dailyPlans.text); 
      });
 
      //appends to page 
      $("#timeblock").append(row); 
    }
-   var storedDailyPlans = localStorage.getItem("Daily Plans");
-   $(".userInput").append(storedDailyPlans);
+  
   }
+
+  for (var i = 0; i < localStorage.length; i++){
+   let getStorage = localStorage.getItem(localStorage.key(i));  
+   console.log(getStorage); 
+  }
+  
+    
+   /* var storedDailyPlans ={
+      User: get("inlineFormInput").value.trim(),
+      score: timeleft
+
+      $(".userInput").append(storedDailyPlans);
+      
+    
+
+   }
+    }  */
+    
+
   
  /*Rows and Time 
 
