@@ -47,7 +47,7 @@
    // Current date appended to heading 
   var currentDate = moment().format("dddd, MMMM Do, YYYY"); 
   $("#currentDay").append(currentDate); 
-  var currentTime = "1 PM"//moment().format("h A"); 
+  var currentTime = moment().format("h A"); 
   var past; 
   var future; 
   console.log(currentTime); 
@@ -113,9 +113,8 @@
   console.log("future"); 
   $("#" + currentInput).css("background-color", "green");
   }
-  else if (finalTimes == currentTime){
+  else {
   $("#" + currentInput).css("background-color", "red");
-  console.log("rightnow");
   }
   //closes loop
    }
