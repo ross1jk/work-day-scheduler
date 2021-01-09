@@ -67,15 +67,25 @@
   ]; 
   var input = []; 
   var textArea; 
- // var keyArr = [0, 1, 2, 3, 4, 5, 6, 7, 8]; 
+  var keyArr = [0, 1, 2, 3, 4, 5, 6, 7, 8]; 
   // var calendarTime = currentTime.clone();
   //moment will refrence the original refrence of moment and the current time, will need that infomraiton. 
  
+ //set local storage to input array 
+  for (var i = 0; i < localStorage.length; i++){
+  var getStorage = localStorage.getItem(localStorage.key(i));  
+  //var id = localStorage.key(i); 
+ // console.log(localStorage.key(i) +" : " + getStorage); 
+  input.push(getStorage);
+// console.log(getStorage);
+  } 
+
+
 //Create Time Forms
  function creatTimeForm(){
 
  //array for my complete day times, plans are blanks (not sure will need ids) myday.map--look into
- for (i=0; i < myDay.length; i++) { 
+ for (var i=0; i < myDay.length; i++) { 
    var finalTimes = myDay[pos].time; 
    myPlans = myDay[pos].id
    pos++; 
@@ -102,8 +112,12 @@
      //appends to page 
      $("#timeblock").append(row); 
     
+    
+  
   
   var currentInput = $("#" + myPlans).attr("id").split(' ')[0]; 
+
+
   console.log(currentInput);
    //Rows and Time Color Change Event 
   if (finalTimes < currentTime){
@@ -116,27 +130,22 @@
   else {
   $("#" + currentInput).css("background-color", "red");
   }
+
+//logging values, just not in the right order
+ $("#" + currentInput).text(input[i]); 
   //closes loop
    }
-  
+ 
   //closes create time form 
   }
 
 
-  //set local storage to input array 
-  for (var i = 0; i < localStorage.length; i++){
-  var getStorage = localStorage.getItem(localStorage.key(i));  
-  var id = localStorage.key(i); 
- // console.log(localStorage.key(i) +" : " + getStorage); 
-  input.push({id, getStorage});
-  console.log(input);
-  } 
-  //its reading what I want it to but not going through each input 
- for (var i = 0; i < input.length; i++){
-   if (myDay[pos].id === input[i].id){
-     textArea = input[i].getStorage
+    /*its reading what I want it to but not going through each input 
+    for (var i = 0; i < input.length; i++){
+    if (myPlans === input[i].id){
+    $(input[i].getStorage);
     }
-  }
+   } */
   
   
 
