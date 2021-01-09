@@ -14,6 +14,7 @@ A simple calendar application that allows a user to save events for each hour of
 
 ## Deployed Application
 
+https://ross1jk.github.io/work-day-scheduler/
 
 ## Acceptance Criteria
 
