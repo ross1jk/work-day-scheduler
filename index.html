@@ -47,7 +47,7 @@
    // Current date appended to heading 
   var currentDate = moment().format("dddd, MMMM Do, YYYY"); 
   $("#currentDay").append(currentDate); 
-  var currentTime = moment().format("h A"); 
+  var currentTime = parseInt(moment().format("H")); 
   var past; 
   var future; 
   console.log(currentTime); 
@@ -59,11 +59,11 @@
     {time: "10 AM", id: "10"}, 
     {time: "11 AM", id: "11"}, 
     {time: "12 PM", id: "12"},
-    {time: "1 PM", id: "1"},
-    {time: "2 PM", id: "2"},
-    {time: "3 PM", id: "3"},
-    {time: "4 PM", id: "4"},
-    {time: "5 PM", id: "5"},
+    {time: "1 PM", id: "13"},
+    {time: "2 PM", id: "14"},
+    {time: "3 PM", id: "15"},
+    {time: "4 PM", id: "16"},
+    {time: "5 PM", id: "17"},
   ]; 
   var input = []; 
   var textArea; 
@@ -120,10 +120,10 @@
 
   console.log(currentInput);
    //Rows and Time Color Change Event 
-  if (finalTimes < currentTime){
+  if (myPlans < currentTime){
    $("#" + currentInput).css("background-color", "gray");
   }
-  else if (finalTimes > currentTime){
+  else if (myPlans > currentTime){
   console.log("future"); 
   $("#" + currentInput).css("background-color", "green");
   }
