@@ -47,36 +47,37 @@
    // Current date appended to heading 
   let currentDate = moment().format("dddd, MMMM Do, YYYY"); 
   $("#currentDay").append(currentDate); 
-  let myPlans;
-  let arrClass; 
+  
+
+  var myPlans;
+  var pos = 0;
+  var row; 
+  var myDay = [
+    {time: "9 AM", id: "9"},
+    {time: "10 AM", id: "10"}, 
+    {time: "11 AM", id: "11"}, 
+    {time: "12 PM", id: "12"},
+    {time: "1 PM", id: "1"},
+    {time: "2 PM", id: "2"},
+    {time: "3 PM", id: "3"},
+    {time: "4 PM", id: "4"},
+    {time: "5 PM", id: "5"},
+  ]; 
+  var input = []; 
   // var calendarTime = currentTime.clone();
   //moment will refrence the original refrence of moment and the current time, will need that infomraiton. 
 
 //Create Time Forms
  function creatTimeForm(){
 
- let pos = 0;
-
  //array for my complete day times, plans are blanks (not sure will need ids) myday.map--look into
- let myDay = [
- {time: "9 AM", id: "9", plans: ""},
- {time: "10 AM", id: "10", plans: ""}, 
- {time: "11 AM", id: "11", plans: ""}, 
- {time: "12 PM", id: "12", plans: ""},
- {time: "1 PM", id: "1", plans: ""},
- {time: "2 PM", id: "2", plans: ""},
- {time: "3 PM", id: "3", plans: ""},
- {time: "4 PM", id: "4", plans: ""},
- {time: "5 PM", id: "5", plans: ""},
- ]; 
 
- let row; 
+
  for (i=0; i < myDay.length; i++) { 
-   let finalTimes = myDay[pos].time; 
+   var finalTimes = myDay[pos].time; 
    myPlans = myDay[pos].id
    pos++; 
    //code that has the whole row
-
     row = 
      '<div class="input-group"><div class="input-group-prepend">'
      + //will display the time
@@ -88,8 +89,8 @@
 
      //test that works (as needed) console.log(pos); stop propigation   click(function)
      $(".saveBtn").click(function (e) {
-     let myClass = ($(this).attr("class").split(' ')[4]) 
-     let dailyPlans = {text: $("#"+ myClass).val(), myClass}
+     var myClass = ($(this).attr("class").split(' ')[4]) 
+     var dailyPlans = {text: $("#"+ myClass).val(), myClass}
      e.preventDefault(); 
      e.stopPropagation();
      localStorage.setItem(myClass, dailyPlans.text); 
@@ -97,31 +98,29 @@
 
      //appends to page 
      $("#timeblock").append(row); 
+     
    }
+     
   
+   console.log(row); 
   }
 
   for (var i = 0; i < localStorage.length; i++){
-   let getStorage = localStorage.getItem(localStorage.key(i));  
-   console.log(getStorage); 
-  }
+  var getStorage = localStorage.getItem(localStorage.key(i));  
+  var id = localStorage.key(i); 
+  // var  = $("textarea");
+  console.log(localStorage.key(i) +" : " + getStorage); 
+  // .append(getStorage);
+   //.appendChild(p); 
+  console.log(localStorage.getItem(localStorage.key(i))); 
+  input.push({id, getStorage});
+  console.log(input); 
+  } 
   
-    
-   /* var storedDailyPlans ={
-      User: get("inlineFormInput").value.trim(),
-      score: timeleft
+   
 
-      $(".userInput").append(storedDailyPlans);
-      
-    
-
-   }
-    }  */
-    
-
-  
- /*Rows and Time 
-
+  //localStorage.getItem(localStorage.key(0)))
+  /*Rows and Time Color Change Event 
  function timeCheck(){
   let past = moment().format("h A"); 
   let present = moment().format("h A"); 
@@ -130,7 +129,16 @@
   if ($("#timeDisplay") <= present){
     $(".userInput").append("cool");  
   }
- } */
+ }
+ //button info :) /*
+ <div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-default timeDisplay">5 PM</span>
+    </div>
+    <textarea class="form-control userInput" id="5" aria-label="With textarea" aria-describedby="saveBtn"></textarea>
+    <div class="input-group-append" id="saveBtn"><button class="btn btn-primary btn-lg saveBtn 5" type="button"><i class="far fa-save"></i></button></div> </div></div>
+ 
+ */
 
 
 
