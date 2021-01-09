@@ -1,12 +1,4 @@
-/* What I will need:
-  -rows that can be typed into: 9-5 every hour
-  -times that match and change
-  -css that changes color with the time
-  -a save button for the event
-  -running dates/times
-    */
- 
-   $(function(){
+$(function(){
     // Current date appended to heading 
    var currentDate = moment().format("dddd, MMMM Do, YYYY"); 
    $("#currentDay").append(currentDate); 
@@ -29,7 +21,7 @@
      {time: "5 PM", id: "17"},
    ]; 
    var input = []; 
-   var textArea; 
+   var textArea = "";  
    
    
   //set local storage to input array 
@@ -112,3 +104,11 @@
    
     creatTimeForm(); 
     });
+
+/* What I will need:
+  -rows that can be typed into: 9-5 every hour
+  -times that match and change
+  -css that changes color with the time
+  -a save button for the event
+  -running dates/times
+    */
