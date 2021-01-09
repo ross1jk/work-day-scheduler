@@ -45,9 +45,12 @@
  
   $(function(){
    // Current date appended to heading 
-  let currentDate = moment().format("dddd, MMMM Do, YYYY"); 
+  var currentDate = moment().format("dddd, MMMM Do, YYYY"); 
   $("#currentDay").append(currentDate); 
-  
+  var currentTime = "1 PM"//moment().format("h A"); 
+  var past; 
+  var future; 
+  console.log(currentTime); 
 
   var myPlans;
   var pos = 0;
@@ -64,26 +67,27 @@
     {time: "5 PM", id: "5"},
   ]; 
   var input = []; 
+  var textArea; 
+ // var keyArr = [0, 1, 2, 3, 4, 5, 6, 7, 8]; 
   // var calendarTime = currentTime.clone();
   //moment will refrence the original refrence of moment and the current time, will need that infomraiton. 
-
+ 
 //Create Time Forms
  function creatTimeForm(){
 
  //array for my complete day times, plans are blanks (not sure will need ids) myday.map--look into
-
-
  for (i=0; i < myDay.length; i++) { 
    var finalTimes = myDay[pos].time; 
    myPlans = myDay[pos].id
    pos++; 
    //code that has the whole row
+
     row = 
      '<div class="input-group"><div class="input-group-prepend">'
      + //will display the time
      '<span class="input-group-text" id="inputGroup-sizing-default timeDisplay">' + finalTimes + '</span></div>'
      + //text input goes here
-     '<textarea class="form-control userInput" id="' + myPlans + '" aria-label="With textarea" aria-describedby="saveBtn"></textarea>'
+     '<textarea class="form-control userInput" id="' + myPlans + '" aria-label="With textarea" aria-describedby="saveBtn">' + textArea + '</textarea>'
      + //save button is here 
      '<div class="input-group-append" id="saveBtn"><button class="btn btn-primary btn-lg saveBtn ' + myPlans + '" type="button"><i class="far fa-save"></i></button></div> </div></div>'
 
@@ -98,49 +102,47 @@
 
      //appends to page 
      $("#timeblock").append(row); 
-     
-   }
-     
+    
+  var currentInput = $("#" + myPlans).attr("id").split(' ')[0]; 
+  console.log(currentInput);
+   //Rows and Time Color Change Event 
   
-   console.log(row); 
+  if (finalTimes >= currentTime){
+   $("#" + currentInput).css("background-color", "gray");
+   console.log("past"); 
+  }
+  else if (finalTimes <= currentTime){
+  console.log("future"); 
+  $("#" + currentInput).css("background-color", "green");
+  }
+  else if (finalTimes == currentTime){
+  $("#" + currentInput).css("background-color", "red");
+  console.log("rightnow");
+  }
+  //closes loop
+   }
+ 
+  //closes create time form 
   }
 
+  //set local storage to input array 
   for (var i = 0; i < localStorage.length; i++){
   var getStorage = localStorage.getItem(localStorage.key(i));  
   var id = localStorage.key(i); 
-  // var  = $("textarea");
-  console.log(localStorage.key(i) +" : " + getStorage); 
-  // .append(getStorage);
-   //.appendChild(p); 
-  console.log(localStorage.getItem(localStorage.key(i))); 
+ // console.log(localStorage.key(i) +" : " + getStorage); 
   input.push({id, getStorage});
-  console.log(input); 
+ // console.log(input);
   } 
   
-   
+  //its reading what I want it to but not going through each input 
+  for (var i = 0; i < input.length; i++){
+    if (myDay[pos].id === input[i].id){
+     textArea = input[i].getStorage
 
-  //localStorage.getItem(localStorage.key(0)))
-  /*Rows and Time Color Change Event 
- function timeCheck(){
-  let past = moment().format("h A"); 
-  let present = moment().format("h A"); 
-  let future = moment().format("h A"); 
-
-  if ($("#timeDisplay") <= present){
-    $(".userInput").append("cool");  
+    }
   }
- }
- //button info :) /*
- <div class="input-group">
-  <div class="input-group-prepend">
-    <span class="input-group-text" id="inputGroup-sizing-default timeDisplay">5 PM</span>
-    </div>
-    <textarea class="form-control userInput" id="5" aria-label="With textarea" aria-describedby="saveBtn"></textarea>
-    <div class="input-group-append" id="saveBtn"><button class="btn btn-primary btn-lg saveBtn 5" type="button"><i class="far fa-save"></i></button></div> </div></div>
- 
- */
-
-
+  
+  
 
 
   creatTimeForm(); 
