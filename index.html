@@ -51,7 +51,6 @@
   var past; 
   var future; 
   console.log(currentTime); 
-
   var myPlans;
   var pos = 0;
   var row; 
@@ -103,15 +102,14 @@
      //appends to page 
      $("#timeblock").append(row); 
     
+  
   var currentInput = $("#" + myPlans).attr("id").split(' ')[0]; 
   console.log(currentInput);
    //Rows and Time Color Change Event 
-  
-  if (finalTimes >= currentTime){
+  if (finalTimes < currentTime){
    $("#" + currentInput).css("background-color", "gray");
-   console.log("past"); 
   }
-  else if (finalTimes <= currentTime){
+  else if (finalTimes > currentTime){
   console.log("future"); 
   $("#" + currentInput).css("background-color", "green");
   }
@@ -121,9 +119,10 @@
   }
   //closes loop
    }
- 
+  
   //closes create time form 
   }
+
 
   //set local storage to input array 
   for (var i = 0; i < localStorage.length; i++){
@@ -131,14 +130,12 @@
   var id = localStorage.key(i); 
  // console.log(localStorage.key(i) +" : " + getStorage); 
   input.push({id, getStorage});
- // console.log(input);
+  console.log(input);
   } 
-  
   //its reading what I want it to but not going through each input 
-  for (var i = 0; i < input.length; i++){
-    if (myDay[pos].id === input[i].id){
+ for (var i = 0; i < input.length; i++){
+   if (myDay[pos].id === input[i].id){
      textArea = input[i].getStorage
-
     }
   }
   
