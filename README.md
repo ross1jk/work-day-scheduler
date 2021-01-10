@@ -84,14 +84,11 @@ There are many variables that are needed to make this work.
 
 **currentTime** Tells me computer current hour using moment
 
-**past** COME BACK
-**future** COME BACK
-
 **pos** gives me an array start pos
 
 **row** gives me my rows for my html
 
-**textArea** COME BACK NOT USING
+**textArea** set as a blank string 
 
 **getStroage** grabs my local storage 
 
@@ -109,14 +106,20 @@ There are many variables that are needed to make this work.
 
 **input** blank, so local storage can be pushed inside
 
+**intialset** sets all my initial storage keys to keep the proper order if the page is refreshed
+
 ### Event Listeners / Buttons 
 My saveBtn is located inside my for loop because each button is created dynamically in my loop in my jQuery. I have to call out each class and that classes value using myClass and Daily plans, then set those to local storage.
 
 ### Conditions
 
-Time block Condition - not working yet 
+**local storage condition** if my local storage is undefended then the page will populate keys. This is needed for the initial loading of the page 
+
+**Time block Condition** checks my id of my input div and compares it to the local time, then color codes based on whether it is in the past present or future. 
 
 ### for Loops
+
+**initial check of local storage** checks my local storage, then sets my local storage to have a key with a blank string value so that the inputs all display in the correct areas. 
 
 **Local storage loop**  this gets my local storage values and pushes it into an array.
 
@@ -126,56 +129,6 @@ Time block Condition - not working yet
 
 Finally you will find my Pseudo code at the bottom of the screen.  I used this to help me plan my various needs fo this project. With so many things going on in one application it helped to keep me organised and on track. 
 
-
-
-
-
-
-
-### Technical Acceptance Criteria: 40%
-
-* Satisfies all of the above acceptance criteria plus the following:
-
-  * Uses the Moment.js library to work with date and time
-
-### Deployment: 32%
-
-* Application deployed at live URL
-
-* Application loads with no errors
-
-* Application GitHub URL submitted
-
-* GitHub repo contains application code
-
-### Application Quality: 15%
-
-* Application user experience is intuitive and easy to navigate
-
-* Application user interface style is clean and polished
-
-* Application resembles the mock-up functionality provided in the homework instructions
-
-### Repository Quality: 13%
-
-* Repository has a unique name
-
-* Repository follows best practices for file structure and naming conventions
-
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-* Repository contains multiple descriptive commit messages
-
-* Repository contains quality README file with description, screenshot, and link to deployed application
-
-
-## Review
-
-You are required to submit BOTH of the following for review:
-
-* The URL of the functional, deployed application.
-
-* The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
 
 - - -
 © 2020 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.

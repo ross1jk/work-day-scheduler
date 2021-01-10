@@ -19,14 +19,14 @@ $(function(){
    ]; 
    var input = []; 
    var textArea = "";  
-   
+
+   //intial set of storage 
   for (var i = 0; i < myDay.length; i++){
      var intialSet = myDay[i].id
      if (localStorage.getItem(localStorage.key(i)) == undefined){
      localStorage.setItem(intialSet, "");
      }
   }
-   
    
   //set local storage to input array 
    for (var i = 0; i < localStorage.length; i++){
