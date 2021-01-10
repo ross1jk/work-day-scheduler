@@ -14,6 +14,8 @@ A simple calendar application that allows a user to save events for each hour of
 
 ## Deployed Application
 
+**Local Storage must be cleared manually before deployment, then refresh page before any actions are made or will not work**
+
 https://ross1jk.github.io/work-day-scheduler/
 
 ## Acceptance Criteria
