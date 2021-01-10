@@ -3,9 +3,6 @@ $(function(){
    var currentDate = moment().format("dddd, MMMM Do, YYYY"); 
    $("#currentDay").append(currentDate); 
    var currentTime = parseInt(moment().format("H")); 
-   var past; 
-   var future; 
-   console.log(currentTime); 
    var myPlans;
    var pos = 0;
    var row; 
@@ -23,6 +20,13 @@ $(function(){
    var input = []; 
    var textArea = "";  
    
+  for (var i = 0; i < myDay.length; i++){
+     var intialSet = myDay[i].id
+     if (localStorage.getItem(localStorage.key(i)) == undefined){
+     localStorage.setItem(intialSet, "");
+     }
+  }
+   
    
   //set local storage to input array 
    for (var i = 0; i < localStorage.length; i++){
@@ -35,7 +39,6 @@ $(function(){
      return (a.storageId) - (b.storageId);
    });  
  
-  console.log(input);
  
  //Create Time Forms
   function creatTimeForm(){
@@ -63,13 +66,12 @@ $(function(){
       e.stopPropagation();
       localStorage.setItem(myClass, dailyPlans.text); 
       });
- 
+      
       //appends to page 
       $("#timeblock").append(row); 
      
    
    var currentInput = $("#" + myPlans).attr("id").split(' ')[0]; 
-   console.log(currentInput);
  
    //Rows and Time Color Change Event 
    if (myPlans < currentTime){
@@ -82,22 +84,23 @@ $(function(){
    $("#" + currentInput).css("background-color", "#ff6961");
    }
  
-  
    
    //closes loop
     }
-     
-   //log my values
-   $("#09").text(input[0].getStorage);
-   $("#10").text(input[1].getStorage);
-   $("#11").text(input[2].getStorage);
-   $("#12").text(input[3].getStorage);
-   $("#13").text(input[4].getStorage);
-   $("#14").text(input[5].getStorage);
-   $("#15").text(input[6].getStorage);
-   $("#16").text(input[7].getStorage);
-   //$("#17").text(input[8].getStorage);
-    //closes create time form 
+
+//text input inside form
+
+  $("#09").text(input[0].getStorage);
+  $("#10").text(input[1].getStorage);
+  $("#11").text(input[2].getStorage);
+  $("#12").text(input[3].getStorage);
+  $("#13").text(input[4].getStorage);
+  $("#14").text(input[5].getStorage);
+  $("#15").text(input[6].getStorage);
+  $("#16").text(input[7].getStorage);
+  $("#17").text(input[8].getStorage);
+
+   //closes create time form 
    }
  
      
