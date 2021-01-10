@@ -1,5 +1,12 @@
 # 05 Third-Party APIs: Work Day Scheduler
 
+## Pre-deployment Steps
+
+### Local Storage must be cleared manually before deployment, then reload browser before any actions are made with the deployed application
+
+## Deployed Application
+https://ross1jk.github.io/work-day-scheduler/
+
 ## User Story
 
 ```
@@ -12,11 +19,6 @@ SO THAT I can manage my time effectively
 
 A simple calendar application that allows a user to save events for each hour of the day by modifying starter code. This application runs in the browser and features dynamically updated HTML and CSS powered by jQuery.
 
-## Deployed Application
-
-**Local Storage must be cleared manually before deployment, then refresh page before any actions are made or will not work**
-
-https://ross1jk.github.io/work-day-scheduler/
 
 ## Acceptance Criteria
 
